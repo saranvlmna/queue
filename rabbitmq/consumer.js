@@ -1,5 +1,5 @@
+//docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
 var amqp = require("amqplib/callback_api");
-
 amqp.connect("amqp://localhost", function (error0, connection) {
   if (error0) {
     throw error0;
