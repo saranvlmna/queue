@@ -7,7 +7,7 @@ const port = 3000;
 // Initialize Kafka client
 const kafka = new Kafka({
   clientId: "my-app",
-  brokers: ["kafka:9092"],
+  brokers: ["localhost:9092"],
 });
 // Create Kafka producer
 const producer = kafka.producer();
