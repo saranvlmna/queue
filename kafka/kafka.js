@@ -63,7 +63,7 @@ app.get("/send-message", async (req, res) => {
   try {
     await producer.send({
       topic: "my-topic",
-      messages: [{ value: "Hello Kafka!" }],
+      messages: [{ value: "Hello Kafka consumers!" }],
     });
     res.send("Message sent successfully");
   } catch (error) {
