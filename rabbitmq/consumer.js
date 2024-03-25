@@ -8,7 +8,6 @@ amqp.connect("amqp://localhost", function (error0, connection) {
     if (error1) {
       throw error1;
     }
-    ////
     // connect creted queue
     var queue = "newTask";
     channel.assertQueue(queue, {
@@ -29,6 +28,5 @@ amqp.connect("amqp://localhost", function (error0, connection) {
         noAck: true,
       }
     );
-    ////
   });
 });

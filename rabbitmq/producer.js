@@ -11,7 +11,6 @@ amqp.connect("amqp://localhost", function (error0, connection) {
     if (error1) {
       throw error1;
     }
-    ////
     channel.assertQueue(queue, {
       durable: true,
     });
@@ -21,7 +20,6 @@ amqp.connect("amqp://localhost", function (error0, connection) {
       persistent: true,
     });
     console.log(" [x] task pushed to queue '%s'", task);
-    ///
   });
   setTimeout(function () {
     connection.close();
