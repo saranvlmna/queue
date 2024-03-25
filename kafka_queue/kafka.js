@@ -65,3 +65,8 @@ app.get("/send-message", async (req, res) => {
 app.listen(port, () => {
   console.log(`Express server listening at http://localhost:${port}`);
 });
+
+
+
+
+//https://kafka.apache.org/quickstart
