@@ -1,4 +1,10 @@
+//https://kafka.apache.org/quickstart
 
+// Get the docker image
+// $ docker pull apache/kafka:3.7.0
+
+// Start the kafka docker container
+// $ docker run -p 9092:9092 apache/kafka:3.7.0
 //single producer with multiple consumer
 
 const express = require("express");
@@ -68,12 +74,3 @@ app.get("/send-message", async (req, res) => {
 app.listen(port, () => {
   console.log(`Express server listening at http://localhost:${port}`);
 });
-
-
-
-
-//https://kafka.apache.org/quickstart
-
-//bin/zookeeper-server-start.sh config/zookeeper.properties
-//bin/kafka-server-start.sh config/server.properties
-
