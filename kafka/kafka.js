@@ -5,8 +5,9 @@
 
 // Start the kafka docker container
 // $ docker run -p 9092:9092 apache/kafka:3.7.0
-//single producer with multiple consumer
 
+
+//single producer with multiple consumer
 const express = require("express");
 const { Kafka } = require("kafkajs");
 
