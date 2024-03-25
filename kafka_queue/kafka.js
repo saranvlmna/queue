@@ -1,3 +1,4 @@
+
 //single producer with multiple consumer
 
 const express = require("express");
@@ -68,4 +69,11 @@ app.listen(port, () => {
   console.log(`Express server listening at http://localhost:${port}`);
 });
 
+
+
+
 //https://kafka.apache.org/quickstart
+
+//bin/zookeeper-server-start.sh config/zookeeper.properties
+//bin/kafka-server-start.sh config/server.properties
+
