@@ -6,7 +6,6 @@
 // Start the kafka docker container
 // $ docker run -p 9092:9092 apache/kafka:3.7.0
 
-
 //single producer with multiple consumer
 const express = require("express");
 const { Kafka } = require("kafkajs");
@@ -33,14 +32,14 @@ async function run() {
   await consumer_two.connect();
 
   // Subscribe consumers to the topic
-  await consumer_one.subscribe({ topic: "my-topic", fromBeginning: true });
-  await consumer_two.subscribe({ topic: "my-topic", fromBeginning: true });
+  await consumer_one.subscribe({ topic: "likes", fromBeginning: true });
+  await consumer_two.subscribe({ topic: "likes", fromBeginning: true });
 
   // Start consuming messages
   await consumer_one.run({
     eachMessage: async ({ topic, partition, message }) => {
       console.log({
-        value: message.value.toString(),
+        value: JSON.parse(message.value),
         groupId: "group_one",
       });
     },
@@ -49,7 +48,7 @@ async function run() {
   await consumer_two.run({
     eachMessage: async ({ topic, partition, message }) => {
       console.log({
-        value: message.value.toString(),
+        value: JSON.parse(message.value),
         groupId: "group_two",
       });
     },
@@ -61,9 +60,11 @@ run().catch(console.error);
 // Define a route to send messages
 app.get("/send-message", async (req, res) => {
   try {
+    let data = [{ message: "hey kafka" }];
+    data = JSON.stringify(data);
     await producer.send({
-      topic: "my-topic",
-      messages: [{ value: "Hello Kafka consumers!" }],
+      topic: "likes",
+      messages: [{ value: data }],
     });
     res.send("Message sent successfully");
   } catch (error) {
