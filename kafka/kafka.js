@@ -58,7 +58,7 @@ async function run() {
 run().catch(console.error);
 
 // Define a route to send messages
-app.get("/send-message", async (req, res) => {
+app.get("/pushtoqueue", async (req, res) => {
   try {
     let data = [{ message: "hey kafka" }];
     data = JSON.stringify(data);
