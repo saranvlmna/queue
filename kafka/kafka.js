@@ -23,34 +23,34 @@ const kafka = new Kafka({
 const producer = kafka.producer();
 
 // Create Kafka consumer instances for different consumer groups
-const consumer1 = kafka.consumer({ groupId: "group1" });
-const consumer2 = kafka.consumer({ groupId: "group2" });
+const consumer_one = kafka.consumer({ groupId: "group_one" });
+const consumer_two = kafka.consumer({ groupId: "group_two" });
 
 async function run() {
   // Connect the producer and consumers
   await producer.connect();
-  await consumer1.connect();
-  await consumer2.connect();
+  await consumer_one.connect();
+  await consumer_two.connect();
 
   // Subscribe consumers to the topic
-  await consumer1.subscribe({ topic: "my-topic", fromBeginning: true });
-  await consumer2.subscribe({ topic: "my-topic", fromBeginning: true });
+  await consumer_one.subscribe({ topic: "my-topic", fromBeginning: true });
+  await consumer_two.subscribe({ topic: "my-topic", fromBeginning: true });
 
   // Start consuming messages
-  await consumer1.run({
+  await consumer_one.run({
     eachMessage: async ({ topic, partition, message }) => {
       console.log({
         value: message.value.toString(),
-        groupId: "group1",
+        groupId: "group_one",
       });
     },
   });
 
-  await consumer2.run({
+  await consumer_two.run({
     eachMessage: async ({ topic, partition, message }) => {
       console.log({
         value: message.value.toString(),
-        groupId: "group2",
+        groupId: "group_two",
       });
     },
   });
